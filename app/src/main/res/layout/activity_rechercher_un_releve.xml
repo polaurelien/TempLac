@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -17,29 +17,31 @@
             android:gravity="center_horizontal"
             android:text="@string/nomApp" />
 
-        <Button
-            android:id="@+id/btnSaisie"
+        <Spinner
+            android:id="@+id/listeNomLacRecherche"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/btnSaisie" />
+            style="@android:style/Widget.Holo.Light.Spinner"
+            android:text="@string/nomLacRecherche"/>
+
+        <CalendarView
+            android:id="@+id/calendrierRecherche"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal" />
+
+        <Spinner
+            android:id="@+id/listeHeureRecherche"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@android:style/Widget.Holo.Light.Spinner"
+            android:text="@string/HeureRecherche"/>
 
         <Button
-            android:id="@+id/btnRecherche"
+            android:id="@+id/button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/btnRecherche" />
-
-        <Button
-            android:id="@+id/btnMoyenne"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/btnMoyenne" />
-
-        <ImageView
-            android:id="@+id/logo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/logo" />
+            android:text="@string/btnRechercheUnReleve" />
 
     </LinearLayout>
 

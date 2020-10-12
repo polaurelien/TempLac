@@ -3,4 +3,8 @@
     <string name="nomApp">Tempéo</string>
     <string name="btnSaisie">Saisir un relevé</string>
     <string name="btnRecherche">Rechercher un relevé</string>
+    <string name="btnMoyenne">Afficher la moyenne d\'un mois</string>
+    <string name="btnRechercheUnReleve">Rechercher</string>
+    <string name="nomLacRecherche">Nom du lac</string>
+    <string name="HeureRecherche">Horaire</string>
 </resources>
