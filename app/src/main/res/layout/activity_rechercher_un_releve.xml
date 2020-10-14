@@ -38,10 +38,16 @@
             android:text="@string/HeureRecherche"/>
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/btnRechercherUnReleve"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/btnRechercheUnReleve" />
+
+        <Button
+            android:id="@+id/buttonQuitterRechercheReleve1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/btnQuitter" />
 
     </LinearLayout>
 
