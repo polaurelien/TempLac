@@ -13,4 +13,5 @@
     <string name="SaisirTemp">Saisir la température</string>
     <string name="btnEnregistrer">Enregistrer</string>
     <string name="btnQuitter">QUITTER</string>
+    <string name="btnAfficherMoyenne">CALCULER LA MOYENNE</string>
 </resources>

@@ -39,5 +39,17 @@ public class MainActivity extends AppCompatActivity
 
         };
         btnSaisie.setOnClickListener(ecouteur2);
+
+        Button btnMoyenne = findViewById(R.id.btnMoyenne);
+        View.OnClickListener ecouteur3 = new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                Intent intent = new Intent(MainActivity.this, MoyenneMensuelleActivity.class);
+                startActivity(intent);
+            }
+
+        };
+        btnMoyenne.setOnClickListener(ecouteur3);
     }
 }

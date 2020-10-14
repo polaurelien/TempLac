@@ -6,5 +6,44 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"></LinearLayout>
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="@string/nomApp" />
+
+        <Spinner
+            android:id="@+id/listeNomLacMoyenne"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/dateMoyenne"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="date" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TextView" />
+
+        <Button
+            android:id="@+id/btnAfficherMoyenne"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/btnAfficherMoyenne"
+            />
+
+        <Button
+            android:id="@+id/btnQuitterMoyenne"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/btnQuitter" />
+
+
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

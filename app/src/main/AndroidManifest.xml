@@ -22,6 +22,9 @@
         <activity android:name=".SaisirUnReleveActivity">
 
         </activity>
+        <activity android:name=".MoyenneMensuelleActivity">
+
+        </activity>
     </application>
 
 </manifest>
