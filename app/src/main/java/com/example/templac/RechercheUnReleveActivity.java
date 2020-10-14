@@ -27,7 +27,7 @@ public class RechercheUnReleveActivity extends Activity
             @Override
             public void onClick(View view)
             {
-                Intent intent = new Intent(RechercheUnReleveActivity.this, AfficherUnReleve.class);
+                Intent intent = new Intent(RechercheUnReleveActivity.this, AfficherUnReleveActivity.class);
                 startActivity(intent);
             }
         };

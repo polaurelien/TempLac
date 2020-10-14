@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class AfficherUnReleve extends Activity
+public class AfficherUnReleveActivity extends Activity
 {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -15,7 +15,7 @@ public class AfficherUnReleve extends Activity
         View.OnClickListener ecouteur1 = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(AfficherUnReleve.this, MainActivity.class);
+                Intent intent = new Intent(AfficherUnReleveActivity.this, MainActivity.class);
                 startActivity(intent);
             }
         };
@@ -25,7 +25,7 @@ public class AfficherUnReleve extends Activity
         View.OnClickListener ecouteur2 = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(AfficherUnReleve.this, RechercheUnReleveActivity.class);
+                Intent intent = new Intent(AfficherUnReleveActivity.this, RechercheUnReleveActivity.class);
                 startActivity(intent);
             }
         };
