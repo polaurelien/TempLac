@@ -14,4 +14,7 @@
     <string name="btnEnregistrer">Enregistrer</string>
     <string name="btnQuitter">QUITTER</string>
     <string name="btnAfficherMoyenne">CALCULER LA MOYENNE</string>
+    <string name="NomLacAfficher">Nom du lac</string>
+    <string name="tempAfficher">Température</string>
+    <string name="btnOK">OK</string>
 </resources>
