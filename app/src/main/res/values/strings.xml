@@ -8,4 +8,9 @@
     <string name="nomLacRecherche">Nom du lac</string>
     <string name="HeureRecherche">Horaire</string>
     <string name="SaisirNomLac">Saisir nom du lac</string>
+    <string name="SaisirLongitude">Saisir la longitude</string>
+    <string name="SaisirLatitude">Saisir la latitude</string>
+    <string name="SaisirTemp">Saisir la température</string>
+    <string name="btnEnregistrer">Enregistrer</string>
+    <string name="btnQuitter">QUITTER</string>
 </resources>

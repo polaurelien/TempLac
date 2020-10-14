@@ -21,53 +21,56 @@
             android:id="@+id/editTextNomLac"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="@string/SaisirNomLac" />
+            android:hint="Nom du lac"
+            android:inputType="textPersonName" />
+
+
+
+        <Spinner
+            android:id="@+id/ListeHeureSaisir"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Heure"/>
 
         <EditText
             android:id="@+id/editTextDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="date" />
+            android:inputType="date"
+            android:hint="Date" />
 
         <EditText
-            android:id="@+id/editTextTime"
+            android:id="@+id/editTextSaisirLongitude"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="time" />
+            android:hint="Saisir la longitude"
+            android:inputType="textPersonName" />
 
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/editTextSaisirLatitude"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Name" />
+            android:hint="Saisir la latitude"
+            android:inputType="textPersonName" />
 
         <EditText
-            android:id="@+id/editTextTextPersonName3"
+            android:id="@+id/editTextSaisirTemp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Name" />
-
-        <EditText
-            android:id="@+id/editTextTextPersonName4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Name" />
+            android:hint="Saisir la température"
+            android:inputType="textPersonName" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/btnEnregistrerSaisir"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Button" />
+            android:text="@string/btnEnregistrer" />
+
+        <Button
+            android:id="@+id/btnQuitterSaisir"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/btnQuitter" />
 
     </LinearLayout>
 
