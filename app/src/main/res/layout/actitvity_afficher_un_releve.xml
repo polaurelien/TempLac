@@ -36,10 +36,16 @@
             android:hint="Vide" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/btnQuitterAfficher"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/btnOK" />
+
+        <Button
+            android:id="@+id/btnRetourAfficher"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/btnRetour" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

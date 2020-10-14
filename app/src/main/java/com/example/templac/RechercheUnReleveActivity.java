@@ -21,5 +21,16 @@ public class RechercheUnReleveActivity extends Activity
             }
         };
         btnQuitter.setOnClickListener(ecouteur1);
+
+        Button btnRechercher = findViewById(R.id.btnRechercherUnReleve);
+        View.OnClickListener ecouteur2 = new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                Intent intent = new Intent(RechercheUnReleveActivity.this, AfficherUnReleve.class);
+                startActivity(intent);
+            }
+        };
+        btnRechercher.setOnClickListener(ecouteur2);
     }
 }
