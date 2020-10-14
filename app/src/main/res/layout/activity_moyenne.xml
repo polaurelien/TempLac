@@ -23,13 +23,14 @@
             android:id="@+id/dateMoyenne"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="date" />
+            android:inputType="date"
+            android:hint="@string/Date"/>
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:hint="@string/hintMoyenneResultat" />
 
         <Button
             android:id="@+id/btnAfficherMoyenne"

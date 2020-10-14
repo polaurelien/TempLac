@@ -17,4 +17,8 @@
     <string name="NomLacAfficher">Nom du lac</string>
     <string name="tempAfficher">Température</string>
     <string name="btnOK">OK</string>
+    <string name="Date">Date</string>
+    <string name="hintMoyenneResultat">Entrez le mois et le lac</string>
+    <string name="HintNomLac">Nom du lac</string>
+    <string name="heure">Heure</string>
 </resources>
