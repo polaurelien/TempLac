@@ -7,4 +7,5 @@
     <string name="btnRechercheUnReleve">Rechercher</string>
     <string name="nomLacRecherche">Nom du lac</string>
     <string name="HeureRecherche">Horaire</string>
+    <string name="SaisirNomLac">Saisir nom du lac</string>
 </resources>
