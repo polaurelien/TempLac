@@ -1,7 +1,7 @@
 package com.example.templac;
 
 import android.database.sqlite.SQLiteOpenHelper;
-
+/*
 public class CreateBDD extends SQLiteOpenHelper
 {
     //TABLE LAC ------------------------------------------------------------------------------------
@@ -13,3 +13,4 @@ public class CreateBDD extends SQLiteOpenHelper
     private static final String COL_LATITUDE = "latitudeLac";
     private static final String CREATE_TABLE = "CREATE TABLE " + TABLE_LAC + " ("+COL_ID+" INTEGER PRIMARY KEY AUTOINCREMENT,"+ COL_NOM + " TEXT NOT NULL, " + COL_LONGITUDE + " TEXT NOT NULL, " + COL_LATITUDE + " TEXT NOT NULL);";
 }
+*/

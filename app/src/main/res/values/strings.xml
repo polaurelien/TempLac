@@ -22,4 +22,12 @@
     <string name="HintNomLac">Nom du lac</string>
     <string name="heure">Heure</string>
     <string name="btnRetour">RETOUR</string>
+    <string name="libelleTempAfficher18h">Relevé à 18h</string>
+    <string name="libelleTempAfficher12h">Relevé à 12h</string>
+    <string name="libelleTempAfficher6h">Relevé à 6h</string>
+    <string name="libelleTempAfficher0h">Relevé à 0h</string>
+    <string name="libellePosGPS">Position GPS</string>
+    <string name="libelleNomLacAfficher">Nom du Lac</string>
+    <string name="tempCelcius">Celcius</string>
+    <string name="tempFahr">Fahrenheit</string>
 </resources>
