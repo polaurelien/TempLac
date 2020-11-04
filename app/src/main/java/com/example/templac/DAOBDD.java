@@ -10,7 +10,7 @@ public class DAOBDD {
     private static final String NOM_BDD = "TempeoBDD";
 
 
-    //TABLE LAC ------------------------------------------------------------------------------------
+    //TABLE LAC -------------------------------------------------------------------------------------
 
     private static final String TABLE_LAC = "tlac";
     static final String COL_ID = "_id";
