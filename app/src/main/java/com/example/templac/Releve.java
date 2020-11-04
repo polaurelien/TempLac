@@ -1,29 +1,35 @@
 package com.example.templac;
 
-import java.sql.Date;
-
 public class Releve
 {
-    protected Lac unLac;
+    protected int id;
+    protected int idLac;
     protected String dateReleve;
     protected String heureReleve;
     protected String tempReleve;
 
-    public Releve(Lac unLac, String dateReleve, String heureReleve, String tempReleve) {
-
-        this.unLac = unLac;
+    public Releve(int unLac, String dateReleve, String heureReleve, String tempReleve)
+    {
+        this.idLac = unLac;
         this.dateReleve = dateReleve;
         this.heureReleve = heureReleve;
         this.tempReleve = tempReleve;
     }
 
-
-    public Lac getUnLac() {
-        return unLac;
+    public int getId() {
+        return id;
     }
 
-    public void setUnLac(Lac unLac) {
-        this.unLac = unLac;
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getUnLac() {
+        return idLac;
+    }
+
+    public void setUnLac(int unLac) {
+        this.idLac = unLac;
     }
 
     public String getDateReleve() {

@@ -47,6 +47,8 @@ public class DAOBDD {
 
     // Méthodes d'intance
 
+
+
     public DAOBDD open(){
         db = tableCourante.getWritableDatabase();
         return this;
@@ -82,7 +84,7 @@ public class DAOBDD {
         return unLac; //On retourne un lac
     }
 
-    public Lac getLactWithNom(String nom){
+    public Lac getLacWithNom(String nom){
         //Récupère dans un Cursor les valeurs correspondant à un article grâce à sa designation
         Cursor c = db.query(TABLE_LAC, new String[]
                         {COL_ID,COL_NOM, COL_LATITUDE, COL_LONGITUDE}, COL_NOM + " =\"" + nom +"\"", null, null, null, null);
@@ -110,7 +112,7 @@ public class DAOBDD {
             return null;
         //Sinon
         c.moveToFirst(); //on se place sur le premier élément
-        Releve unReleve = new Releve(null,null,null,null); //On créé un relevé
+        Releve unReleve = new Releve(0,null,null,null); //On créé un relevé
         //on lui affecte toutes les infos grâce aux infos contenues dans le Cursor
         unReleve.setDateReleve(c.getString(NUM_COL_dateReleve));
         unReleve.setHeureReleve(c.getString(NUM_COL_heureReleve));
