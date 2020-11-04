@@ -32,6 +32,23 @@
             android:layout_height="wrap_content"
             android:hint="@string/hintMoyenneResultat" />
 
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <RadioButton
+                android:id="@+id/btnCelcius"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/tempCelcius" />
+
+            <RadioButton
+                android:id="@+id/btnFahr"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/tempFahr" />
+        </RadioGroup>
+
         <Button
             android:id="@+id/btnAfficherMoyenne"
             android:layout_width="match_parent"

@@ -37,6 +37,23 @@
             style="@android:style/Widget.Holo.Light.Spinner"
             android:text="@string/HeureRecherche"/>
 
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <RadioButton
+                android:id="@+id/btnCelcius"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/tempCelcius" />
+
+            <RadioButton
+                android:id="@+id/btnFahr"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/tempFahr" />
+        </RadioGroup>
+
         <Button
             android:id="@+id/btnRechercherUnReleve"
             android:layout_width="match_parent"
