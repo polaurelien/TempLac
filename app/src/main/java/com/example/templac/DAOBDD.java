@@ -82,7 +82,7 @@ public class DAOBDD {
         return unLac; //On retourne un lac
     }
 
-    public Lac getClientWithNomprenom(String nom){
+    public Lac getLactWithNom(String nom){
         //Récupère dans un Cursor les valeurs correspondant à un article grâce à sa designation
         Cursor c = db.query(TABLE_LAC, new String[]
                         {COL_ID,COL_NOM, COL_LATITUDE, COL_LONGITUDE}, COL_NOM + " =\"" + nom +"\"", null, null, null, null);
