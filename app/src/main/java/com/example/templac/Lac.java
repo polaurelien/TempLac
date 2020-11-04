@@ -2,25 +2,17 @@ package com.example.templac;
 
 public class Lac
 {
-    protected int id;
-    protected String nom;
-    protected double longitude;
-    protected double latitude;
 
-    public Lac(int id, String nom, double longitude, double latitude)
+    protected String nom;
+    protected String longitude;
+    protected String latitude;
+
+    public Lac( String nom, String longitude, String latitude)
     {
-        this.id = id;
+
         this.nom = nom;
         this.longitude = longitude;
         this.latitude = latitude;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getNom() {
@@ -31,19 +23,19 @@ public class Lac
         this.nom = nom;
     }
 
-    public double getLongitude() {
+    public String getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(double longitude) {
+    public void setLongitude(String longitude) {
         this.longitude = longitude;
     }
 
-    public double getLatitude() {
+    public String getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(double latitude) {
+    public void setLatitude(String latitude) {
         this.latitude = latitude;
     }
 }

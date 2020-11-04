@@ -4,27 +4,19 @@ import java.sql.Date;
 
 public class Releve
 {
-    protected int idReleve;
     protected Lac unLac;
-    protected Date dateReleve;
+    protected String dateReleve;
     protected String heureReleve;
-    protected double tempReleve;
+    protected String tempReleve;
 
-    public Releve(int idReleve, Lac unLac, Date dateReleve, String heureReleve, double tempReleve) {
-        this.idReleve = idReleve;
+    public Releve(Lac unLac, String dateReleve, String heureReleve, String tempReleve) {
+
         this.unLac = unLac;
         this.dateReleve = dateReleve;
         this.heureReleve = heureReleve;
         this.tempReleve = tempReleve;
     }
 
-    public int getIdReleve() {
-        return idReleve;
-    }
-
-    public void setIdReleve(int idReleve) {
-        this.idReleve = idReleve;
-    }
 
     public Lac getUnLac() {
         return unLac;
@@ -34,11 +26,11 @@ public class Releve
         this.unLac = unLac;
     }
 
-    public Date getDateReleve() {
+    public String getDateReleve() {
         return dateReleve;
     }
 
-    public void setDateReleve(Date dateReleve) {
+    public void setDateReleve(String dateReleve) {
         this.dateReleve = dateReleve;
     }
 
@@ -50,11 +42,11 @@ public class Releve
         this.heureReleve = heureReleve;
     }
 
-    public double getTempReleve() {
+    public String getTempReleve() {
         return tempReleve;
     }
 
-    public void setTempReleve(double tempReleve) {
+    public void setTempReleve(String tempReleve) {
         this.tempReleve = tempReleve;
     }
 }
