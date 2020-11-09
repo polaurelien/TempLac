@@ -32,7 +32,6 @@ public class SaisirUnReleveActivity extends Activity {
         heure.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 lheure[0] = String.valueOf(heure.getSelectedItem());
-                Toast.makeText(SaisirUnReleveActivity.this, "Vous avez choisie : " + "\nle compteur numéro : " + lheure[0], Toast.LENGTH_SHORT).show();
             }
 
             @Override

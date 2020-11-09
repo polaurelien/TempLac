@@ -3,9 +3,11 @@ package com.example.templac;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity
 {
@@ -13,6 +15,8 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+        //remplirTableLac();
+        //viderTableLac();
         setContentView(R.layout.activity_main);
         Button btnAfficherUnReleve = findViewById(R.id.btnRecherche);
         View.OnClickListener ecouteur1 = new View.OnClickListener() {
@@ -51,5 +55,24 @@ public class MainActivity extends AppCompatActivity
 
         };
         btnMoyenne.setOnClickListener(ecouteur3);
+    }
+
+    public void remplirTableLac()
+    {
+        DAOBDD lacBDD = new DAOBDD(this);
+        Lac lac1 = new Lac("Sainte-Croix", "43.771450", "6,189804");
+        Lac lac2 = new Lac("Bourget", "45,729632", "5,869561");
+        lacBDD.open();
+        lacBDD.insererLac(lac1);
+        lacBDD.insererLac(lac2);
+        Cursor c = lacBDD.getDataLac();
+        Toast.makeText(getApplicationContext(), " il y a " + String.valueOf(c.getCount()) + " lacs ", Toast.LENGTH_LONG).show();
+    }
+
+    public void viderTableLac()
+    {
+        DAOBDD lacBDD = new DAOBDD(this);
+        lacBDD.open();
+        lacBDD.dropLac();
     }
 }

@@ -5,6 +5,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import static java.sql.Types.NULL;
+
 public class DAOBDD {
     static final int VERSION_BDD =1;
     private static final String NOM_BDD = "TempeoBDD";
@@ -78,16 +80,22 @@ public class DAOBDD {
         Lac unLac = new Lac(null,null,null); //On créé un lac
         //on lui affecte toutes les infos grâce aux infos contenues dans le Cursor
         unLac.setNom(c.getString(NUM_COL_NOM));
-        unLac.setLongitude(c.getString(NUM_COL_LONGITUDE));
         unLac.setLatitude(c.getString(NUM_COL_LATITUDE));
+        unLac.setLongitude(c.getString(NUM_COL_LONGITUDE));
         c.close(); //On ferme le cursor
         return unLac; //On retourne un lac
+    }
+
+    public long dropLac()
+    {
+        //String[] Args = new String[0];
+        return db.delete(TABLE_LAC, null, null);
     }
 
     public Lac getLacWithNom(String nom){
         //Récupère dans un Cursor les valeurs correspondant à un article grâce à sa designation
         Cursor c = db.query(TABLE_LAC, new String[]
-                        {COL_ID,COL_NOM, COL_LATITUDE, COL_LONGITUDE}, COL_NOM + " =\"" + nom +"\"", null, null, null, null);
+                        {COL_ID,COL_NOM, COL_LONGITUDE, COL_LATITUDE}, COL_NOM + " =\"" + nom +"\"", null, null, null, null);
         return cursorToLac(c);
     }
 

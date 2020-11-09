@@ -7,12 +7,13 @@ public class Lac
     protected String longitude;
     protected String latitude;
 
-    public Lac( String nom, String longitude, String latitude)
+    public Lac( String nom,  String latitude, String longitude)
     {
         this.id = id;
         this.nom = nom;
-        this.longitude = longitude;
         this.latitude = latitude;
+        this.longitude = longitude;
+
     }
 
     public int getId() {

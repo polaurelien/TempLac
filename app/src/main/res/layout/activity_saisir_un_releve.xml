@@ -36,7 +36,7 @@
             android:layout_height="wrap_content"
             android:inputType="date"
             android:hint="@string/Date" />
-
+<!--
         <EditText
             android:id="@+id/editTextSaisirLongitude"
             android:layout_width="match_parent"
@@ -50,7 +50,7 @@
             android:layout_height="wrap_content"
             android:hint="Saisir la latitude"
             android:inputType="textPersonName" />
-
+-->
         <EditText
             android:id="@+id/editTextSaisirTemp"
             android:layout_width="match_parent"

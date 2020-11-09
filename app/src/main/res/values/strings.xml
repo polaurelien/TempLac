@@ -30,4 +30,6 @@
     <string name="libelleNomLacAfficher">Nom du Lac</string>
     <string name="tempCelcius">Celcius</string>
     <string name="tempFahr">Fahrenheit</string>
+    <string name="libelleTempAfficherHeure">Heure du relevé</string>
+    <string name="libelleTempAfficher">Température</string>
 </resources>
