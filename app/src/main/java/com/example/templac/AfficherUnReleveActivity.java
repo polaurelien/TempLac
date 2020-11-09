@@ -48,6 +48,7 @@ public class AfficherUnReleveActivity extends Activity
         TextView temp = findViewById(R.id.tempAfficher);
 
         releveBDD.open();
+        Releve releve = new Releve()
         Cursor c = releveBDD.getDataReleve();
         nomLac.setText(DAOBDD.NUM_COL_NOM);
 
