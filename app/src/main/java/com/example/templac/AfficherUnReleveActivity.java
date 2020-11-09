@@ -49,7 +49,7 @@ public class AfficherUnReleveActivity extends Activity
 
         releveBDD.open();
         Cursor c = releveBDD.getDataReleve();
-
+        nomLac.setText(DAOBDD.NUM_COL_NOM);
 
     }
 

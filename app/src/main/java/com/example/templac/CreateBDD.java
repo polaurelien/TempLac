@@ -17,20 +17,21 @@ public class CreateBDD extends SQLiteOpenHelper
     //TABLE LAC ------------------------------------------------------------------------------------
 
     private static final String TABLE_LAC = "tlac";
-    static final String COL_ID = "_id";
+    static final String COL_IDLAC = "_idLac";
     private static final String COL_NOM = "nomLac";
     private static final String COL_LATITUDE = "latitudeLac";
     private static final String COL_LONGITUDE = "longitudeLac";
-    private static final String CREATE_TABLE_LAC = "CREATE TABLE " + TABLE_LAC + " ("+COL_ID+" INTEGER PRIMARY KEY AUTOINCREMENT,"+ COL_NOM + " TEXT NOT NULL, " + COL_LATITUDE + " TEXT NOT NULL, " + COL_LONGITUDE + " TEXT NOT NULL);";
+    private static final String CREATE_TABLE_LAC = "CREATE TABLE " + TABLE_LAC + " ("+COL_IDLAC+" INTEGER PRIMARY KEY AUTOINCREMENT,"+ COL_NOM + " TEXT NOT NULL, " + COL_LATITUDE + " TEXT NOT NULL, " + COL_LONGITUDE + " TEXT NOT NULL);";
 
     //TABLE RELEVE ---------------------------------------------------------------------------------
 
     private static final String TABLE_RELEVE = "treleve";
+    static final String COL_IDRELEVE = "_idReleve";
     private static final String COL_LAC = "idLac";
     private static final String COL_dateReleve = "dateReleve";
     private static final String COL_heureReleve = "heureReleve";
     private static final String COL_tempReleve = "tempReleve";
-    private static final String CREATE_TABLE_RELEVE = "CREATE TABLE " + TABLE_RELEVE + " ("+COL_ID+" INTEGER PRIMARY KEY AUTOINCREMENT,"+ COL_LAC + " TEXT NOT NULL, " + COL_dateReleve + " TEXT NOT NULL, " + COL_heureReleve+ " TEXT NOT NULL, " + COL_tempReleve + " TEXT NOT NULL);";
+    private static final String CREATE_TABLE_RELEVE = "CREATE TABLE " + TABLE_RELEVE + " ("+COL_IDRELEVE+" INTEGER PRIMARY KEY AUTOINCREMENT,"+ COL_LAC + " TEXT NOT NULL, " + COL_dateReleve + " TEXT NOT NULL, " + COL_heureReleve+ " TEXT NOT NULL, " + COL_tempReleve + " TEXT NOT NULL);";
 
 
     @Override

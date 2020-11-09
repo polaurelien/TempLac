@@ -15,8 +15,8 @@ public class DAOBDD {
     //TABLE LAC -------------------------------------------------------------------------------------
 
     private static final String TABLE_LAC = "tlac";
-    static final String COL_ID = "_id";
-    static final int NUM_COL_ID = 0;
+    static final String COL_IDLAC = "_idLac";
+    static final int NUM_COL_IDLAC = 0;
     private static final String COL_NOM = "nomLac";
     static final int NUM_COL_NOM = 1;
     private static final String COL_LONGITUDE = "longitudeLac";
@@ -27,6 +27,8 @@ public class DAOBDD {
     //TABLE RELEVE ---------------------------------------------------------------------------------
 
     private static final String TABLE_RELEVE = "treleve";
+    static final String COL_IDRELEVE = "_idReleve";
+    static final int NUM_COL_IDRELEVE = 0;
     private static final String COL_LAC = "idLac";
     static final int NUM_COL_LAC = 0;
     private static final String COL_dateReleve = "dateReleve";
@@ -95,7 +97,7 @@ public class DAOBDD {
     public Lac getLacWithNom(String nom){
         //Récupère dans un Cursor les valeurs correspondant à un article grâce à sa designation
         Cursor c = db.query(TABLE_LAC, new String[]
-                        {COL_ID,COL_NOM, COL_LONGITUDE, COL_LATITUDE}, COL_NOM + " =\"" + nom +"\"", null, null, null, null);
+                        {COL_IDLAC,COL_NOM, COL_LONGITUDE, COL_LATITUDE}, COL_NOM + " =\"" + nom +"\"", null, null, null, null);
         return cursorToLac(c);
     }
 
@@ -128,12 +130,20 @@ public class DAOBDD {
         c.close(); //On ferme le cursor
         return unReleve; //On retourne le relevé
     }
-    public Releve getReleveWithNumCpt(String numcpt){
+    public Releve getReleveWithDate(String date){
         //Récupère dans un Cursor les valeurs correspondant à un relevé grâce au numéro de compteur
-        Cursor c = db.query(TABLE_RELEVE, new String[] {COL_LAC,COL_dateReleve, COL_heureReleve, COL_tempReleve}, COL_dateReleve + " = \"" + numcpt +"\"", null, null, null, null);
+        Cursor c = db.query(TABLE_RELEVE, new String[] {COL_LAC,COL_dateReleve, COL_heureReleve, COL_tempReleve}, COL_dateReleve + " = \"" + date +"\"", null, null, null, null);
         return cursorToReleve(c);
     }
     public Cursor getDataReleve(){
         return db.rawQuery("SELECT * FROM treleve", null);
+    }
+
+    public String getLacFromReleve(int id)
+    {
+        Cursor c1 = db.query(TABLE_RELEVE, new String[]{COL_LAC}, COL_IDRELEVE + " = \"" + id +"\"",null,null,null,null);
+        int idLac = cursorToReleve(c1).getUnLac();
+        Cursor c2 = db.query(TABLE_LAC, new String[]{COL_NOM}, COL_IDLAC + " = \"" + idLac +"\"",null,null,null,null);
+        return cursorToLac(c2).getNom();
     }
 }
