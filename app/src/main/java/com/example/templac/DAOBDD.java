@@ -101,6 +101,14 @@ public class DAOBDD {
         return cursorToLac(c);
     }
 
+    public Releve getReleve(String nom, String date, String heure){
+        String idLac = this.getLacWithNom(nom).getId();
+        Cursor c = db.query(TABLE_RELEVE, new String[]
+                {COL_LAC, COL_dateReleve, COL_heureReleve, COL_tempReleve}, COL_IDLAC + " =\"" + idLac +"\"" + " AND " + COL_dateReleve + " =\"" + date +"\"" + " AND " + COL_heureReleve + " =\"" + heure +"\"", null, null, null, null);
+        Releve unReleve = cursorToReleve(c);
+        return unReleve;
+    }
+
     public Cursor getDataLac(){
         return db.rawQuery("SELECT * FROM tlac", null);
     }
