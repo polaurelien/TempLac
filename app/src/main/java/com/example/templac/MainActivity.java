@@ -14,13 +14,8 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
-        boolean tablesremplies = false;
         super.onCreate(savedInstanceState);
-        if(!tablesremplies)
-        {
-            remplirTableLac();
-            tablesremplies = true;
-        }
+        checkTable();
         //viderTableLac();
         setContentView(R.layout.activity_main);
         Button btnAfficherUnReleve = findViewById(R.id.btnRecherche);
@@ -89,5 +84,16 @@ public class MainActivity extends AppCompatActivity
         DAOBDD lacBDD = new DAOBDD(this);
         lacBDD.open();
         lacBDD.dropLac();
+    }
+
+    public void checkTable()
+    {
+        DAOBDD bdd = new DAOBDD(this);
+        bdd.open();
+        Cursor c = bdd.getDataLac();
+        if(c.getCount() == 0)
+        {
+            remplirTableLac();
+        }
     }
 }
