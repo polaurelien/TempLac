@@ -16,6 +16,14 @@ public class Releve
         this.tempReleve = tempReleve;
     }
 
+    public Releve() {
+        //this.idLac = "";
+        this.dateReleve = "";
+        this.heureReleve = "";
+        this.tempReleve = "";
+    }
+
+
     public int getId() {
         return id;
     }
