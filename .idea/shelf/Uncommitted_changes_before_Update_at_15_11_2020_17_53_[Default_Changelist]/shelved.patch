@@ -1,0 +1,183 @@
+Index: app/src/main/java/com/example/templac/MainActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.templac;\r\n\r\nimport androidx.appcompat.app.AppCompatActivity;\r\n\r\nimport android.content.Intent;\r\nimport android.database.Cursor;\r\nimport android.os.Bundle;\r\nimport android.view.View;\r\nimport android.widget.Button;\r\nimport android.widget.Toast;\r\n\r\npublic class MainActivity extends AppCompatActivity\r\n{\r\n    @Override\r\n    protected void onCreate(Bundle savedInstanceState)\r\n    {\r\n        super.onCreate(savedInstanceState);\r\n        //remplirTableLac();\r\n        //viderTableLac();\r\n        setContentView(R.layout.activity_main);\r\n        Button btnAfficherUnReleve = findViewById(R.id.btnRecherche);\r\n        View.OnClickListener ecouteur1 = new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View view)\r\n            {\r\n                Intent intent = new Intent(MainActivity.this, RechercheUnReleveActivity.class);\r\n                startActivity(intent);\r\n\r\n            }\r\n\r\n        };\r\n        btnAfficherUnReleve.setOnClickListener(ecouteur1);\r\n\r\n        Button btnSaisie = findViewById(R.id.btnSaisie);\r\n        View.OnClickListener ecouteur2 = new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View view)\r\n            {\r\n                Intent intent = new Intent(MainActivity.this, SaisirUnReleveActivity.class);\r\n                startActivity(intent);\r\n\r\n            }\r\n\r\n        };\r\n        btnSaisie.setOnClickListener(ecouteur2);\r\n\r\n        Button btnMoyenne = findViewById(R.id.btnMoyenne);\r\n        View.OnClickListener ecouteur3 = new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View view)\r\n            {\r\n                Intent intent = new Intent(MainActivity.this, MoyenneMensuelleActivity.class);\r\n                startActivity(intent);\r\n            }\r\n\r\n        };\r\n        btnMoyenne.setOnClickListener(ecouteur3);\r\n    }\r\n\r\n    public void remplirTableLac()\r\n    {\r\n        DAOBDD lacBDD = new DAOBDD(this);\r\n        Lac lac1 = new Lac(\"Sainte-Croix\", \"43.771450\", \"6,189804\");\r\n        Lac lac2 = new Lac(\"Bourget\", \"45,729632\", \"5,869561\");\r\n        lacBDD.open();\r\n        lacBDD.insererLac(lac1);\r\n        lacBDD.insererLac(lac2);\r\n        Cursor c = lacBDD.getDataLac();\r\n        Toast.makeText(getApplicationContext(), \" il y a \" + String.valueOf(c.getCount()) + \" lacs \", Toast.LENGTH_LONG).show();\r\n    }\r\n\r\n    public void viderTableLac()\r\n    {\r\n        DAOBDD lacBDD = new DAOBDD(this);\r\n        lacBDD.open();\r\n        lacBDD.dropLac();\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/templac/MainActivity.java	(revision 01cc6de9a1833933f861fc75e838723f60a10f4d)
++++ app/src/main/java/com/example/templac/MainActivity.java	(date 1605459035882)
+@@ -15,8 +15,11 @@
+     protected void onCreate(Bundle savedInstanceState)
+     {
+         super.onCreate(savedInstanceState);
++
+         //remplirTableLac();
+         //viderTableLac();
++        afficherNbReleve();
++
+         setContentView(R.layout.activity_main);
+         Button btnAfficherUnReleve = findViewById(R.id.btnRecherche);
+         View.OnClickListener ecouteur1 = new View.OnClickListener() {
+@@ -69,6 +72,14 @@
+         Toast.makeText(getApplicationContext(), " il y a " + String.valueOf(c.getCount()) + " lacs ", Toast.LENGTH_LONG).show();
+     }
+ 
++    public void afficherNbReleve()
++    {
++        DAOBDD bdd = new DAOBDD(this);
++        bdd.open();
++        Cursor c = bdd.getDataReleve();
++        Toast.makeText(getApplicationContext(), " il y a " + String.valueOf(c.getCount()) + " releves ", Toast.LENGTH_LONG).show();
++    }
++
+     public void viderTableLac()
+     {
+         DAOBDD lacBDD = new DAOBDD(this);
+Index: app/src/main/java/com/example/templac/AfficherUnReleveActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.templac;\r\n\r\nimport android.app.Activity;\r\nimport android.content.Intent;\r\nimport android.database.Cursor;\r\nimport android.os.Bundle;\r\nimport android.content.Intent;\r\nimport android.view.View;\r\nimport android.widget.Button;\r\nimport android.widget.TextView;\r\n\r\npublic class AfficherUnReleveActivity extends Activity\r\n{\r\n    protected void onCreate(Bundle savedInstanceState) {\r\n        //Bundle b = getIntent().getExtras();\r\n        //int x  = b.getInt(\"unevariable\");\r\n        //int NomLac  = b.getInt(\"NomLacAfficher\");\r\n\r\n        super.onCreate(savedInstanceState);\r\n        setContentView(R.layout.actitvity_afficher_un_releve);\r\n\r\n        String heure = \"\";\r\n        String lac = \"\";\r\n        String date = \"\";\r\n\r\n        Intent intent = getIntent();\r\n        if (intent != null) {\r\n            heure = intent.getStringExtra(\"EXTRA_HEURE\");\r\n            lac = intent.getStringExtra(\"EXTRA_LAC\");\r\n            date = intent.getStringExtra(\"EXTRA_DATE\");\r\n        }\r\n\r\n\r\n        Button btnQuitter = findViewById(R.id.btnQuitterAfficher);\r\n        View.OnClickListener ecouteur1 = new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View view) {\r\n                int x = 1;\r\n                Intent intent = new Intent(AfficherUnReleveActivity.this, MainActivity.class);\r\n                //intent.putExtra(\"NomLacAfficher\", \"TEST 1\");\r\n                //intent.putExtra(\"unevariable\", x);\r\n                startActivity(intent);\r\n            }\r\n        };\r\n        btnQuitter.setOnClickListener(ecouteur1);\r\n\r\n        Button btnRetour = findViewById(R.id.btnRetourAfficher);\r\n        View.OnClickListener ecouteur2 = new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View view) {\r\n                Intent intent = new Intent(AfficherUnReleveActivity.this, RechercheUnReleveActivity.class);\r\n                startActivity(intent);\r\n            }\r\n        };\r\n        btnRetour.setOnClickListener(ecouteur2);\r\n\r\n        DAOBDD releveBDD = new DAOBDD(this);\r\n\r\n        TextView nomLac = findViewById(R.id.NomLacAfficher);\r\n        TextView pos = findViewById(R.id.positionGPS);\r\n        TextView heure = findViewById(R.id.tempAfficherHeure);\r\n        TextView temp = findViewById(R.id.tempAfficher);\r\n\r\n        releveBDD.open();\r\n        Releve releve = releveBDD.getReleve();\r\n        final String nomLacBdd = releveBDD.getLacFromReleve(releve.getId());\r\n        final String posLacBdd = releveBDD.getLacWithNom(nomLacBdd).getLatitude() + \",\" + releveBDD.getLacWithNom(nomLacBdd).getLongitude();\r\n        final String heureBdd = releve.getHeureReleve();\r\n        final String tempBdd = releve.getTempReleve();\r\n        nomLac.setText(nomLacBdd);\r\n        pos.setText(posLacBdd);\r\n        heure.setText\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/templac/AfficherUnReleveActivity.java	(revision 01cc6de9a1833933f861fc75e838723f60a10f4d)
++++ app/src/main/java/com/example/templac/AfficherUnReleveActivity.java	(date 1605457633741)
+@@ -9,6 +9,8 @@
+ import android.widget.Button;
+ import android.widget.TextView;
+ 
++import java.util.Date;
++
+ public class AfficherUnReleveActivity extends Activity
+ {
+     protected void onCreate(Bundle savedInstanceState) {
+@@ -19,15 +21,15 @@
+         super.onCreate(savedInstanceState);
+         setContentView(R.layout.actitvity_afficher_un_releve);
+ 
+-        String heure = "";
+-        String lac = "";
+-        String date = "";
++        String heure1 = "";
++        String lac1 = "";
++        String date1 = "";
+ 
+         Intent intent = getIntent();
+         if (intent != null) {
+-            heure = intent.getStringExtra("EXTRA_HEURE");
+-            lac = intent.getStringExtra("EXTRA_LAC");
+-            date = intent.getStringExtra("EXTRA_DATE");
++            heure1 = intent.getStringExtra("EXTRA_HEURE");
++            lac1 = intent.getStringExtra("EXTRA_LAC");
++            date1 = intent.getStringExtra("EXTRA_DATE");
+         }
+ 
+ 
+@@ -62,13 +64,14 @@
+         TextView temp = findViewById(R.id.tempAfficher);
+ 
+         releveBDD.open();
+-        Releve releve = releveBDD.getReleve();
++        Releve releve = releveBDD.getReleve(lac1, date1, heure1);
+         final String nomLacBdd = releveBDD.getLacFromReleve(releve.getId());
+         final String posLacBdd = releveBDD.getLacWithNom(nomLacBdd).getLatitude() + "," + releveBDD.getLacWithNom(nomLacBdd).getLongitude();
+         final String heureBdd = releve.getHeureReleve();
+         final String tempBdd = releve.getTempReleve();
+         nomLac.setText(nomLacBdd);
+         pos.setText(posLacBdd);
+-        heure.setText
++        heure.setText(heureBdd);
++        temp.setText(tempBdd);
+     }
+ }
+Index: app/src/main/java/com/example/templac/SaisirUnReleveActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.templac;\r\n\r\nimport android.app.Activity;\r\nimport android.content.Intent;\r\nimport android.os.Bundle;\r\nimport android.view.View;\r\nimport android.widget.AdapterView;\r\nimport android.widget.ArrayAdapter;\r\nimport android.widget.Button;\r\nimport android.widget.EditText;\r\nimport android.widget.Spinner;\r\nimport android.widget.Toast;\r\n\r\nimport java.sql.Date;\r\n\r\npublic class SaisirUnReleveActivity extends Activity {\r\n    protected void onCreate(Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n        setContentView(R.layout.activity_saisir_un_releve);\r\n        final DAOBDD bdd = new DAOBDD(this);\r\n        bdd.open();\r\n        final String[] lheure = new String[1];\r\n        final EditText nom = findViewById(R.id.editTextNomLac);\r\n        final EditText date = findViewById(R.id.editTextDate);\r\n        final EditText temp = findViewById(R.id.editTextSaisirTemp);\r\n        final Spinner heure = (Spinner) findViewById(R.id.ListeHeureSaisir);\r\n        final String[] lesHeures = {\"00h\", \"6h\", \"12h\", \"18h\"};\r\n\r\n        ArrayAdapter<String> dataAdapterR = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, lesHeures);\r\n        dataAdapterR.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);\r\n        heure.setAdapter(dataAdapterR);\r\n        heure.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {\r\n            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {\r\n                lheure[0] = String.valueOf(heure.getSelectedItem());\r\n            }\r\n\r\n            @Override\r\n            public void onNothingSelected(AdapterView<?> adapterView) {\r\n\r\n            }\r\n        });\r\n        /*ArrayAdapter<String> dataAdaptaterR = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, lesHeures);\r\n        dataAdaptaterR.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);\r\n        heure.setAdapter(dataAdaptaterR);\r\n        heure.setOnItemClickListener(new AdapterView.OnItemClickListener() {\r\n            @Override\r\n            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {\r\n                lesHeures[0] = String.valueOf(heure.getSelectedItem());\r\n            }\r\n\r\n            public void onNothingSelected(AdapterView<?> adapterView)\r\n            {}\r\n        });*/\r\n\r\n        Button btnQuitter = findViewById(R.id.btnQuitterSaisir);\r\n        View.OnClickListener ecouteur1 = new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View view)\r\n            {\r\n                Intent intent = new Intent(SaisirUnReleveActivity.this, MainActivity.class);\r\n                startActivity(intent);\r\n            }\r\n        };\r\n        btnQuitter.setOnClickListener(ecouteur1);\r\n\r\n        Button btnEnregistrer = findViewById(R.id.btnEnregistrerSaisir);\r\n        View.OnClickListener ecouteur2 = new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View view)\r\n            {\r\n                Lac lac = bdd.getLacWithNom(nom.getText().toString());\r\n                int idLac = lac.getId();\r\n                Releve releve = new Releve(idLac, date.getText().toString(), heure.toString(), temp.getText().toString());\r\n                bdd.insererReleve(releve);\r\n                bdd.close();\r\n                finish();\r\n            }\r\n        };\r\n        btnQuitter.setOnClickListener(ecouteur1);\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/templac/SaisirUnReleveActivity.java	(revision 01cc6de9a1833933f861fc75e838723f60a10f4d)
++++ app/src/main/java/com/example/templac/SaisirUnReleveActivity.java	(date 1605459035896)
+@@ -77,5 +77,6 @@
+             }
+         };
+         btnQuitter.setOnClickListener(ecouteur1);
++        btnEnregistrer.setOnClickListener(ecouteur2);
+     }
+ }
+Index: app/src/main/java/com/example/templac/RechercheUnReleveActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.templac;\r\n\r\nimport android.app.Activity;\r\nimport android.content.Intent;\r\nimport android.os.Bundle;\r\nimport android.view.View;\r\nimport android.widget.Button;\r\nimport android.widget.CalendarView;\r\n\r\npublic class RechercheUnReleveActivity extends Activity\r\n{\r\n    protected void onCreate(Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n        setContentView(R.layout.activity_rechercher_un_releve);\r\n        final DAOBDD bdd = new DAOBDD(this);\r\n        bdd.open();\r\n        final String[] lheure = new String[1];\r\n        final String[] lelac = new String[1];\r\n        String date;\r\n        final CalendarView vueCalendrier = findViewById(R.id.calendrierRecherche);\r\n        vueCalendrier.setOnDateChangerListener(new CalendarView.OnDateChangeListener() {\r\n            @Override\r\n            public void onSelectedDayChange(@NonNull CalendarView calendarView, int i, int i1, int i2){\r\n                date = i+\"-\"+i1+\"-\"+i2;\r\n            }\r\n        });\r\n        final Spinner heure = (Spinner) findViewById(R.id.listeHeureRecherche);\r\n        final String[] lesHeures = {\"00h\", \"6h\", \"12h\", \"18h\"};\r\n        final String[] lesLacs = {\"Sainte-Croix\", \"Bourget\", \"Allos\"};\r\n\r\n        ArrayAdapter<String> dataAdapterR1 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, lesHeures);\r\n        dataAdapterR1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);\r\n        heure.setAdapter(dataAdapterR1);\r\n        heure.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {\r\n            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {\r\n                lheure[0] = String.valueOf(heure.getSelectedItem());\r\n            }\r\n            @Override\r\n            public void onNothingSelected(AdapterView<?> adapterView) {}\r\n        });\r\n\r\n        ArrayAdapter<String> dataAdapterR2 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, lesLacs);\r\n        dataAdapterR2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);\r\n        heure.setAdapter(dataAdapterR2);\r\n        heure.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {\r\n            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {\r\n                lelac[0] = String.valueOf(heure.getSelectedItem());\r\n            }\r\n            @Override\r\n            public void onNothingSelected(AdapterView<?> adapterView) {}\r\n        });\r\n\r\n        Button btnQuitter = findViewById(R.id.buttonQuitterRechercheReleve1);\r\n        View.OnClickListener ecouteur1 = new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View view)\r\n            {\r\n                Intent intent = new Intent(RechercheUnReleveActivity.this, MainActivity.class);\r\n                startActivity(intent);\r\n            }\r\n        };\r\n        btnQuitter.setOnClickListener(ecouteur1);\r\n\r\n        Button btnRechercher = findViewById(R.id.btnRechercherUnReleve);\r\n        View.OnClickListener ecouteur2 = new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View view)\r\n            {\r\n                Intent intent = new Intent(RechercheUnReleveActivity.this, AfficherUnReleveActivity.class);\r\n                i.putExtra(\"EXTRA_HEURE\",lheure[0]);\r\n                i.putExtra(\"EXTRA_LAC\",lelac[0]);\r\n                i.putExtra(\"EXTRA_DATE\",date);\r\n                startActivity(intent);\r\n                break;\r\n            }\r\n        };\r\n        btnRechercher.setOnClickListener(ecouteur2);\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/templac/RechercheUnReleveActivity.java	(revision 01cc6de9a1833933f861fc75e838723f60a10f4d)
++++ app/src/main/java/com/example/templac/RechercheUnReleveActivity.java	(date 1605458021717)
+@@ -4,8 +4,13 @@
+ import android.content.Intent;
+ import android.os.Bundle;
+ import android.view.View;
++import android.widget.AdapterView;
++import android.widget.ArrayAdapter;
+ import android.widget.Button;
+ import android.widget.CalendarView;
++import android.widget.Spinner;
++
++import androidx.annotation.NonNull;
+ 
+ public class RechercheUnReleveActivity extends Activity
+ {
+@@ -16,12 +21,12 @@
+         bdd.open();
+         final String[] lheure = new String[1];
+         final String[] lelac = new String[1];
+-        String date;
++        final String[] date = new String[1];
+         final CalendarView vueCalendrier = findViewById(R.id.calendrierRecherche);
+-        vueCalendrier.setOnDateChangerListener(new CalendarView.OnDateChangeListener() {
++        vueCalendrier.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+             @Override
+             public void onSelectedDayChange(@NonNull CalendarView calendarView, int i, int i1, int i2){
+-                date = i+"-"+i1+"-"+i2;
++                date[0] = i+"-"+i1+"-"+i2;
+             }
+         });
+         final Spinner heure = (Spinner) findViewById(R.id.listeHeureRecherche);
+@@ -66,12 +71,12 @@
+             @Override
+             public void onClick(View view)
+             {
+-                Intent intent = new Intent(RechercheUnReleveActivity.this, AfficherUnReleveActivity.class);
++                Intent i = new Intent(RechercheUnReleveActivity.this, AfficherUnReleveActivity.class);
+                 i.putExtra("EXTRA_HEURE",lheure[0]);
+                 i.putExtra("EXTRA_LAC",lelac[0]);
+-                i.putExtra("EXTRA_DATE",date);
+-                startActivity(intent);
+-                break;
++                i.putExtra("EXTRA_DATE", date[0]);
++                startActivity(i);
++
+             }
+         };
+         btnRechercher.setOnClickListener(ecouteur2);
+Index: app/src/main/java/com/example/templac/DAOBDD.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.templac;\r\n\r\nimport android.content.ContentValues;\r\nimport android.content.Context;\r\nimport android.database.Cursor;\r\nimport android.database.sqlite.SQLiteDatabase;\r\n\r\nimport static java.sql.Types.NULL;\r\n\r\npublic class DAOBDD {\r\n    static final int VERSION_BDD =1;\r\n    private static final String NOM_BDD = \"TempeoBDD\";\r\n\r\n\r\n    //TABLE LAC -------------------------------------------------------------------------------------\r\n\r\n    private static final String TABLE_LAC = \"tlac\";\r\n    static final String COL_IDLAC = \"_idLac\";\r\n    static final int NUM_COL_IDLAC = 0;\r\n    private static final String COL_NOM = \"nomLac\";\r\n    static final int NUM_COL_NOM = 1;\r\n    private static final String COL_LONGITUDE = \"longitudeLac\";\r\n    static final int NUM_COL_LONGITUDE = 2;\r\n    private static final String COL_LATITUDE = \"latitudeLac\";\r\n    static final int NUM_COL_LATITUDE = 3;\r\n\r\n    //TABLE RELEVE ---------------------------------------------------------------------------------\r\n\r\n    private static final String TABLE_RELEVE = \"treleve\";\r\n    static final String COL_IDRELEVE = \"_idReleve\";\r\n    static final int NUM_COL_IDRELEVE = 0;\r\n    private static final String COL_LAC = \"idLac\";\r\n    static final int NUM_COL_LAC = 0;\r\n    private static final String COL_dateReleve = \"dateReleve\";\r\n    static final int NUM_COL_dateReleve = 1;\r\n    private static final String COL_heureReleve = \"heureReleve\";\r\n    static final int NUM_COL_heureReleve = 2;\r\n    private static final String COL_tempReleve = \"tempReleve\";\r\n    static final int NUM_COL_tempReleve = 3;\r\n\r\n    private CreateBDD tableCourante;\r\n    private Context context;\r\n    private SQLiteDatabase db;\r\n\r\n    // Le constructeur\r\n\r\n    public DAOBDD(Context context){\r\n        this.context = context;\r\n        tableCourante = new CreateBDD(context, NOM_BDD, null, VERSION_BDD);\r\n    }\r\n\r\n    // Méthodes d'intance\r\n\r\n\r\n\r\n    public DAOBDD open(){\r\n        db = tableCourante.getWritableDatabase();\r\n        return this;\r\n    }\r\n\r\n    public DAOBDD close(){\r\n        db.close();\r\n        return null;\r\n    }\r\n\r\n    public long insererLac (Lac unLac){\r\n        //Création d'un ContentValues (fonctionne comme une HashMap)\r\n        ContentValues values = new ContentValues();\r\n        //on lui ajoute une valeur associé à une clé (qui est le nom de la colonne où on veut mettre la valeur)\r\n        values.put(COL_NOM, unLac.getNom());\r\n        values.put(COL_LONGITUDE, unLac.getLongitude());\r\n        values.put(COL_LATITUDE, unLac.getLatitude());\r\n        //on insère l'objet dans la BDD via le ContentValues\r\n        return db.insert(TABLE_LAC, null, values);\r\n    }\r\n\r\n    private Lac cursorToLac(Cursor c){\r\n        if (c.getCount() == 0)\r\n            return null;\r\n        //Sinon\r\n        c.moveToFirst(); //on se place sur le premier élément\r\n        Lac unLac = new Lac(null,null,null); //On créé un lac\r\n        //on lui affecte toutes les infos grâce aux infos contenues dans le Cursor\r\n        unLac.setNom(c.getString(NUM_COL_NOM));\r\n        unLac.setLatitude(c.getString(NUM_COL_LATITUDE));\r\n        unLac.setLongitude(c.getString(NUM_COL_LONGITUDE));\r\n        c.close(); //On ferme le cursor\r\n        return unLac; //On retourne un lac\r\n    }\r\n\r\n    public long dropLac()\r\n    {\r\n        //String[] Args = new String[0];\r\n        return db.delete(TABLE_LAC, null, null);\r\n    }\r\n\r\n    public Lac getLacWithNom(String nom){\r\n        //Récupère dans un Cursor les valeurs correspondant à un article grâce à sa designation\r\n        Cursor c = db.query(TABLE_LAC, new String[]\r\n                        {COL_IDLAC,COL_NOM, COL_LONGITUDE, COL_LATITUDE}, COL_NOM + \" =\\\"\" + nom +\"\\\"\", null, null, null, null);\r\n        return cursorToLac(c);\r\n    }\r\n\r\n    public Releve getReleve(String nom, String date, String heure){\r\n        String idLac = this.getLacWithNom(nom).getId();\r\n        Cursor c = db.query(TABLE_RELEVE, new String[]\r\n                {COL_LAC, COL_dateReleve, COL_heureReleve, COL_tempReleve}, COL_IDLAC + \" =\\\"\" + idLac +\"\\\"\" + \" AND \" + COL_dateReleve + \" =\\\"\" + date +\"\\\"\" + \" AND \" + COL_heureReleve + \" =\\\"\" + heure +\"\\\"\", null, null, null, null);\r\n        Releve unReleve = cursorToReleve(c);\r\n        return unReleve;\r\n    }\r\n\r\n    public Cursor getDataLac(){\r\n        return db.rawQuery(\"SELECT * FROM tlac\", null);\r\n    }\r\n    //pour le relevé\r\n\r\n    public long insererReleve (Releve unReleve){\r\n        //Création d'un ContentValues (fonctionne comme une HashMap)\r\n        ContentValues values = new ContentValues();\r\n        //on lui ajoute une valeur associé à une clé (qui est le nom de la colonne où on veut mettre la valeur)\r\n        values.put(COL_dateReleve, unReleve.getDateReleve());\r\n        values.put(COL_heureReleve, unReleve.getHeureReleve());\r\n        values.put(COL_tempReleve, unReleve.getTempReleve());\r\n        //on insère l'objet dans la BDD via le ContentValues\r\n        return db.insert(TABLE_RELEVE, null, values);\r\n    }\r\n    private Releve cursorToReleve(Cursor c){ //Cette méthode permet de convertir un cursor en un relevé\r\n        //si aucun élément n'a été retourné dans la requête, on renvoie null\r\n        if (c.getCount() == 0)\r\n            return null;\r\n        //Sinon\r\n        c.moveToFirst(); //on se place sur le premier élément\r\n        Releve unReleve = new Releve(0,null,null,null); //On créé un relevé\r\n        //on lui affecte toutes les infos grâce aux infos contenues dans le Cursor\r\n        unReleve.setDateReleve(c.getString(NUM_COL_dateReleve));\r\n        unReleve.setHeureReleve(c.getString(NUM_COL_heureReleve));\r\n        unReleve.setTempReleve(c.getString(NUM_COL_tempReleve));\r\n        c.close(); //On ferme le cursor\r\n        return unReleve; //On retourne le relevé\r\n    }\r\n    public Releve getReleveWithDate(String date){\r\n        //Récupère dans un Cursor les valeurs correspondant à un relevé grâce au numéro de compteur\r\n        Cursor c = db.query(TABLE_RELEVE, new String[] {COL_LAC,COL_dateReleve, COL_heureReleve, COL_tempReleve}, COL_dateReleve + \" = \\\"\" + date +\"\\\"\", null, null, null, null);\r\n        return cursorToReleve(c);\r\n    }\r\n    public Cursor getDataReleve(){\r\n        return db.rawQuery(\"SELECT * FROM treleve\", null);\r\n    }\r\n\r\n    public String getLacFromReleve(int id)\r\n    {\r\n        Cursor c1 = db.query(TABLE_RELEVE, new String[]{COL_LAC}, COL_IDRELEVE + \" = \\\"\" + id +\"\\\"\",null,null,null,null);\r\n        int idLac = cursorToReleve(c1).getUnLac();\r\n        Cursor c2 = db.query(TABLE_LAC, new String[]{COL_NOM}, COL_IDLAC + \" = \\\"\" + idLac +\"\\\"\",null,null,null,null);\r\n        return cursorToLac(c2).getNom();\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/templac/DAOBDD.java	(revision 01cc6de9a1833933f861fc75e838723f60a10f4d)
++++ app/src/main/java/com/example/templac/DAOBDD.java	(date 1605457724119)
+@@ -102,7 +102,7 @@
+     }
+ 
+     public Releve getReleve(String nom, String date, String heure){
+-        String idLac = this.getLacWithNom(nom).getId();
++        int idLac = this.getLacWithNom(nom).getId();
+         Cursor c = db.query(TABLE_RELEVE, new String[]
+                 {COL_LAC, COL_dateReleve, COL_heureReleve, COL_tempReleve}, COL_IDLAC + " =\"" + idLac +"\"" + " AND " + COL_dateReleve + " =\"" + date +"\"" + " AND " + COL_heureReleve + " =\"" + heure +"\"", null, null, null, null);
+         Releve unReleve = cursorToReleve(c);
