@@ -4,8 +4,13 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CalendarView;
+import android.widget.Spinner;
+
+import androidx.annotation.NonNull;
 
 public class RechercheUnReleveActivity extends Activity
 {
@@ -16,12 +21,12 @@ public class RechercheUnReleveActivity extends Activity
         bdd.open();
         final String[] lheure = new String[1];
         final String[] lelac = new String[1];
-        String date;
+        final String[] date = new String[1];
         final CalendarView vueCalendrier = findViewById(R.id.calendrierRecherche);
-        vueCalendrier.setOnDateChangerListener(new CalendarView.OnDateChangeListener() {
+        vueCalendrier.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView calendarView, int i, int i1, int i2){
-                date = i+"-"+i1+"-"+i2;
+                date[0] = i+"-"+i1+"-"+i2;
             }
         });
         final Spinner heure = (Spinner) findViewById(R.id.listeHeureRecherche);
@@ -66,12 +71,11 @@ public class RechercheUnReleveActivity extends Activity
             @Override
             public void onClick(View view)
             {
-                Intent intent = new Intent(RechercheUnReleveActivity.this, AfficherUnReleveActivity.class);
+                Intent i = new Intent(RechercheUnReleveActivity.this, AfficherUnReleveActivity.class);
                 i.putExtra("EXTRA_HEURE",lheure[0]);
                 i.putExtra("EXTRA_LAC",lelac[0]);
-                i.putExtra("EXTRA_DATE",date);
-                startActivity(intent);
-                break;
+                i.putExtra("EXTRA_DATE", date[0]);
+                startActivity(i);
             }
         };
         btnRechercher.setOnClickListener(ecouteur2);

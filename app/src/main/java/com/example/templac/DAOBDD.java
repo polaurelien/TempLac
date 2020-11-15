@@ -102,7 +102,7 @@ public class DAOBDD {
     }
 
     public Releve getReleve(String nom, String date, String heure){
-        String idLac = this.getLacWithNom(nom).getId();
+        int idLac = this.getLacWithNom(nom).getId();
         Cursor c = db.query(TABLE_RELEVE, new String[]
                 {COL_LAC, COL_dateReleve, COL_heureReleve, COL_tempReleve}, COL_IDLAC + " =\"" + idLac +"\"" + " AND " + COL_dateReleve + " =\"" + date +"\"" + " AND " + COL_heureReleve + " =\"" + heure +"\"", null, null, null, null);
         Releve unReleve = cursorToReleve(c);
@@ -118,6 +118,7 @@ public class DAOBDD {
         //Création d'un ContentValues (fonctionne comme une HashMap)
         ContentValues values = new ContentValues();
         //on lui ajoute une valeur associé à une clé (qui est le nom de la colonne où on veut mettre la valeur)
+        values.put(COL_IDLAC, unReleve.getUnLac());
         values.put(COL_dateReleve, unReleve.getDateReleve());
         values.put(COL_heureReleve, unReleve.getHeureReleve());
         values.put(COL_tempReleve, unReleve.getTempReleve());

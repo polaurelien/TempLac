@@ -19,13 +19,13 @@ public class AfficherUnReleveActivity extends Activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.actitvity_afficher_un_releve);
 
-        String heure = "";
+        String heure1 = "";
         String lac = "";
         String date = "";
 
         Intent intent = getIntent();
         if (intent != null) {
-            heure = intent.getStringExtra("EXTRA_HEURE");
+            heure1 = intent.getStringExtra("EXTRA_HEURE");
             lac = intent.getStringExtra("EXTRA_LAC");
             date = intent.getStringExtra("EXTRA_DATE");
         }
@@ -62,13 +62,14 @@ public class AfficherUnReleveActivity extends Activity
         TextView temp = findViewById(R.id.tempAfficher);
 
         releveBDD.open();
-        Releve releve = releveBDD.getReleve();
+        Releve releve = releveBDD.getReleve(lac, date, heure1);
         final String nomLacBdd = releveBDD.getLacFromReleve(releve.getId());
         final String posLacBdd = releveBDD.getLacWithNom(nomLacBdd).getLatitude() + "," + releveBDD.getLacWithNom(nomLacBdd).getLongitude();
         final String heureBdd = releve.getHeureReleve();
         final String tempBdd = releve.getTempReleve();
         nomLac.setText(nomLacBdd);
         pos.setText(posLacBdd);
-        heure.setText
+        heure.setText(heureBdd);
+        temp.setText(tempBdd);
     }
 }

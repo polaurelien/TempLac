@@ -69,6 +69,14 @@ public class MainActivity extends AppCompatActivity
         Toast.makeText(getApplicationContext(), " il y a " + String.valueOf(c.getCount()) + " lacs ", Toast.LENGTH_LONG).show();
     }
 
+    public void afficherNbReleve()
+    {
+        DAOBDD bdd = new DAOBDD(this);
+        bdd.open();
+        Cursor c = bdd.getDataReleve();
+        Toast.makeText(getApplicationContext(), " il y a " + String.valueOf(c.getCount()) + " releves ", Toast.LENGTH_LONG).show();
+    }
+
     public void viderTableLac()
     {
         DAOBDD lacBDD = new DAOBDD(this);
