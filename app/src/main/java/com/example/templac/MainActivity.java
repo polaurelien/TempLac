@@ -14,8 +14,13 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
+        boolean tablesremplies = false;
         super.onCreate(savedInstanceState);
-        //remplirTableLac();
+        if(!tablesremplies)
+        {
+            remplirTableLac();
+            tablesremplies = true;
+        }
         //viderTableLac();
         setContentView(R.layout.activity_main);
         Button btnAfficherUnReleve = findViewById(R.id.btnRecherche);
