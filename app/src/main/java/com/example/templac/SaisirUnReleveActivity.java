@@ -73,8 +73,8 @@ public class SaisirUnReleveActivity extends Activity {
                 Releve releve = new Releve(idLac, date.getText().toString(), heure.toString(), temp.getText().toString());
                 bdd.insererReleve(releve);
                 bdd.close();
-
-                finish();
+                Intent intent = new Intent(SaisirUnReleveActivity.this, MainActivity.class);
+                startActivity(intent);
             }
         };
         btnEnregistrer.setOnClickListener(ecouteur2);

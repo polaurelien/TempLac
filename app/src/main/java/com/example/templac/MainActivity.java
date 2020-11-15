@@ -62,9 +62,11 @@ public class MainActivity extends AppCompatActivity
         DAOBDD lacBDD = new DAOBDD(this);
         Lac lac1 = new Lac("Sainte-Croix", "43.771450", "6,189804");
         Lac lac2 = new Lac("Bourget", "45,729632", "5,869561");
+        Lac lac3 = new Lac ("Allos", "44,234405","6,707939");
         lacBDD.open();
         lacBDD.insererLac(lac1);
         lacBDD.insererLac(lac2);
+        lacBDD.insererLac(lac3);
         Cursor c = lacBDD.getDataLac();
         Toast.makeText(getApplicationContext(), " il y a " + String.valueOf(c.getCount()) + " lacs ", Toast.LENGTH_LONG).show();
     }
