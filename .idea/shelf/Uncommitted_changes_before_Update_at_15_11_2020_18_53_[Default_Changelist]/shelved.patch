@@ -1,0 +1,60 @@
+Index: app/src/main/java/com/example/templac/RechercheUnReleveActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.templac;\r\n\r\nimport android.app.Activity;\r\nimport android.content.Intent;\r\nimport android.os.Bundle;\r\nimport android.view.View;\r\nimport android.widget.AdapterView;\r\nimport android.widget.ArrayAdapter;\r\nimport android.widget.Button;\r\nimport android.widget.CalendarView;\r\nimport android.widget.Spinner;\r\n\r\nimport androidx.annotation.NonNull;\r\n\r\npublic class RechercheUnReleveActivity extends Activity\r\n{\r\n    protected void onCreate(Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n        setContentView(R.layout.activity_rechercher_un_releve);\r\n        final DAOBDD bdd = new DAOBDD(this);\r\n        bdd.open();\r\n        final String[] lheure = new String[1];\r\n        final String[] lelac = new String[1];\r\n        final String[] date = new String[1];\r\n        final CalendarView vueCalendrier = findViewById(R.id.calendrierRecherche);\r\n        vueCalendrier.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {\r\n            @Override\r\n            public void onSelectedDayChange(@NonNull CalendarView calendarView, int i, int i1, int i2){\r\n                date[0] = i+\"-\"+i1+\"-\"+i2;\r\n            }\r\n        });\r\n        final Spinner heure = (Spinner) findViewById(R.id.listeHeureRecherche);\r\n        final Spinner listeLac = (Spinner) findViewById(R.id.listeNomLacRecherche);\r\n        final String[] lesHeures = {\"00h\", \"6h\", \"12h\", \"18h\"};\r\n        final String[] lesLacs = {\"Sainte-Croix\", \"Bourget\", \"Allos\"};\r\n\r\n        ArrayAdapter<String> dataAdapterR1 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, lesHeures);\r\n        dataAdapterR1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);\r\n        heure.setAdapter(dataAdapterR1);\r\n        heure.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {\r\n            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {\r\n                lheure[0] = String.valueOf(heure.getSelectedItem());\r\n            }\r\n            @Override\r\n            public void onNothingSelected(AdapterView<?> adapterView) {}\r\n        });\r\n\r\n        ArrayAdapter<String> dataAdapterR2 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, lesLacs);\r\n        dataAdapterR2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);\r\n        listeLac.setAdapter(dataAdapterR2);\r\n        listeLac.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {\r\n            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {\r\n                lelac[0] = String.valueOf(listeLac.getSelectedItem());\r\n            }\r\n            @Override\r\n            public void onNothingSelected(AdapterView<?> adapterView) {}\r\n        });\r\n\r\n        Button btnQuitter = findViewById(R.id.buttonQuitterRechercheReleve1);\r\n        View.OnClickListener ecouteur1 = new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View view)\r\n            {\r\n                Intent intent = new Intent(RechercheUnReleveActivity.this, MainActivity.class);\r\n                startActivity(intent);\r\n            }\r\n        };\r\n        btnQuitter.setOnClickListener(ecouteur1);\r\n\r\n        Button btnRechercher = findViewById(R.id.btnRechercherUnReleve);\r\n        View.OnClickListener ecouteur2 = new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View view)\r\n            {\r\n                Intent i = new Intent(RechercheUnReleveActivity.this, AfficherUnReleveActivity.class);\r\n                i.putExtra(\"EXTRA_HEURE\",lheure[0]);\r\n                i.putExtra(\"EXTRA_LAC\",lelac[0]);\r\n                i.putExtra(\"EXTRA_DATE\", date[0]);\r\n                startActivity(i);\r\n            }\r\n        };\r\n        btnRechercher.setOnClickListener(ecouteur2);\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/templac/RechercheUnReleveActivity.java	(revision b3aea8ad3c01642505f96fd5d800aa3119200643)
++++ app/src/main/java/com/example/templac/RechercheUnReleveActivity.java	(date 1605462588133)
+@@ -52,22 +52,15 @@
+             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                 lelac[0] = String.valueOf(listeLac.getSelectedItem());
+             }
++
++
+             @Override
+             public void onNothingSelected(AdapterView<?> adapterView) {}
+         });
+ 
+-        Button btnQuitter = findViewById(R.id.buttonQuitterRechercheReleve1);
+-        View.OnClickListener ecouteur1 = new View.OnClickListener() {
+-            @Override
+-            public void onClick(View view)
+-            {
+-                Intent intent = new Intent(RechercheUnReleveActivity.this, MainActivity.class);
+-                startActivity(intent);
+-            }
+-        };
+-        btnQuitter.setOnClickListener(ecouteur1);
+ 
+         Button btnRechercher = findViewById(R.id.btnRechercherUnReleve);
++
+         View.OnClickListener ecouteur2 = new View.OnClickListener() {
+             @Override
+             public void onClick(View view)
+@@ -76,9 +69,23 @@
+                 i.putExtra("EXTRA_HEURE",lheure[0]);
+                 i.putExtra("EXTRA_LAC",lelac[0]);
+                 i.putExtra("EXTRA_DATE", date[0]);
+-                startActivity(i);
++                startActivityForResult(i, 0);
+             }
+         };
+         btnRechercher.setOnClickListener(ecouteur2);
++
++
++        Button btnQuitter = findViewById(R.id.buttonQuitterRechercheReleve1);
++        View.OnClickListener ecouteur1 = new View.OnClickListener() {
++            @Override
++            public void onClick(View view)
++            {
++                Intent intent = new Intent(RechercheUnReleveActivity.this, MainActivity.class);
++                startActivity(intent);
++            }
++        };
++        btnQuitter.setOnClickListener(ecouteur1);
++
++
+     }
+ }
