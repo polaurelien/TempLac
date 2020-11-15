@@ -30,6 +30,7 @@ public class RechercheUnReleveActivity extends Activity
             }
         });
         final Spinner heure = (Spinner) findViewById(R.id.listeHeureRecherche);
+        final Spinner listeLac = (Spinner) findViewById(R.id.listeNomLacRecherche);
         final String[] lesHeures = {"00h", "6h", "12h", "18h"};
         final String[] lesLacs = {"Sainte-Croix", "Bourget", "Allos"};
 
@@ -46,10 +47,10 @@ public class RechercheUnReleveActivity extends Activity
 
         ArrayAdapter<String> dataAdapterR2 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, lesLacs);
         dataAdapterR2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        heure.setAdapter(dataAdapterR2);
-        heure.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        listeLac.setAdapter(dataAdapterR2);
+        listeLac.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                lelac[0] = String.valueOf(heure.getSelectedItem());
+                lelac[0] = String.valueOf(listeLac.getSelectedItem());
             }
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {}
