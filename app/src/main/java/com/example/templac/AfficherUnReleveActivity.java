@@ -35,7 +35,7 @@ public class AfficherUnReleveActivity extends Activity
         View.OnClickListener ecouteur1 = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int x = 1;
+                //int x = 1;
                 Intent intent = new Intent(AfficherUnReleveActivity.this, MainActivity.class);
                 //intent.putExtra("NomLacAfficher", "TEST 1");
                 //intent.putExtra("unevariable", x);
