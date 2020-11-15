@@ -57,31 +57,6 @@ public class RechercheUnReleveActivity extends Activity
         });
 
         Button btnQuitter = findViewById(R.id.buttonQuitterRechercheReleve1);
-        Button btnRechercher = findViewById(R.id.btnRechercherUnReleve);
-
-        View.OnClickListener ecouteur = new View.OnClickListener() {
-            //on implémente la méthode onclick
-            @Override
-            public void onClick(View v) {
-                switch (v.getId()) {
-                    case R.id.buttonQuitterRechercheReleve1:
-                        //Intent i = new Intent(RechercheUnReleveActivity.this, MainActivity.class);
-                        finish();
-                        break;
-                    case R.id.btnRechercherUnReleve:
-                        Intent i = new Intent(RechercheUnReleveActivity.this, AfficherUnReleveActivity.class);
-                        i.putExtra("EXTRA_HEURE",lheure[0]);
-                        i.putExtra("EXTRA_LAC",lelac[0]);
-                        i.putExtra("EXTRA_DATE", date[0]);
-                        startActivity(i);
-                        break;
-                }
-            }
-        };
-        btnRechercher.setOnClickListener(ecouteur);
-        btnQuitter.setOnClickListener(ecouteur);
-/*
-        Button btnQuitter = findViewById(R.id.buttonQuitterRechercheReleve1);
         View.OnClickListener ecouteur1 = new View.OnClickListener() {
             @Override
             public void onClick(View view)
@@ -104,7 +79,7 @@ public class RechercheUnReleveActivity extends Activity
                 startActivity(i);
             }
         };
-        btnRechercher.setOnClickListener(ecouteur2);*/
+        btnRechercher.setOnClickListener(ecouteur2);
 
 
 

@@ -18,7 +18,8 @@
     <string name="tempAfficher">Température</string>
     <string name="btnOK">OK</string>
     <string name="Date">AAAA-MM-DD</string>
-    <string name="hintMoyenneResultat">Entrez le mois et le lac</string>
+    <string name="Date2">Entrez une journée du mois voulu</string>
+    <string name="hintMoyenneResultat">Température Moyenne</string>
     <string name="HintNomLac">Nom du lac</string>
     <string name="heure">Heure</string>
     <string name="btnRetour">RETOUR</string>
@@ -32,4 +33,6 @@
     <string name="tempFahr">Fahrenheit</string>
     <string name="libelleTempAfficherHeure">Heure du relevé</string>
     <string name="libelleTempAfficher">Température</string>
+    <string name="rien" />
+    <string name="libelMoyenne">Moyenne :</string>
 </resources>

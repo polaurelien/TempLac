@@ -155,4 +155,13 @@ public class DAOBDD {
         Cursor c2 = db.query(TABLE_LAC, new String[]{COL_NOM}, COL_IDLAC + " = \"" + idLac +"\"",null,null,null,null);
         return cursorToLac(c2).getNom();
     }
+
+    public int getMoyenne(String mois, String an, String lac)
+    {
+        int id_lac = getLacWithNom(lac).getId();
+        Cursor c = db.rawQuery("SELECT AVG(tempreleve) FROM treleve where idLac = " + id_lac + " AND strftime('%m', date(daterelevee)) = "+ mois +" AND strftime('%Y', date(daterelevee)) = "+ an, null);
+        c.moveToFirst();
+        int moy = c.getInt(0);
+        return moy;
+    }
 }
