@@ -73,9 +73,10 @@ public class SaisirUnReleveActivity extends Activity {
                 Releve releve = new Releve(idLac, date.getText().toString(), heure.toString(), temp.getText().toString());
                 bdd.insererReleve(releve);
                 bdd.close();
+
                 finish();
             }
         };
-        btnQuitter.setOnClickListener(ecouteur1);
+        btnEnregistrer.setOnClickListener(ecouteur2);
     }
 }
